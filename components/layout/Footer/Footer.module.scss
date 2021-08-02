@@ -1,0 +1,72 @@
+@import "@/styles/variables";
+
+.footer {
+  background-color: $custom-neutral-verydarkblue;
+  color: #fff;
+  padding: $spacing-xxxlarge 0;
+}
+
+.footerlinks {
+  font-size: inherit;
+  padding-inline-start: 0;
+  padding-top: $spacing-large;
+
+  li {
+    list-style: none;
+    line-height: $spacing-xxlarge;
+
+    a {
+      color: $custom-neutral-grayishviolet;
+      cursor: pointer;
+
+      &:hover {
+        color: $custom-primary-cyan;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.iconlinks {
+  display: flex;
+  justify-content: space-between;
+
+  li {
+    font-size: 1.35rem;
+    list-style: none;
+
+    a {
+      color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        color: $custom-primary-cyan;
+      }
+    }
+  }
+}
+
+// mobile screen display
+@media (max-width: 375px) {
+  .footer {
+    text-align: center;
+  }
+
+  .footeritem {
+    padding-bottom: $spacing-xlarge;
+  }
+
+  .footerlinks {
+    padding-top: $spacing-medium;
+
+    li {
+      list-style: none;
+      line-height: $spacing-xxlarge;
+    }
+  }
+
+  .iconlinks {
+    justify-content: space-around;
+    padding: 0 $spacing-xxlarge;
+  }
+}
