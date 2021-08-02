@@ -47,7 +47,7 @@
 }
 
 // mobile screen display
-@media (max-width: 375px) {
+@media screen and (max-width: 375px) {
   .footer {
     text-align: center;
   }
