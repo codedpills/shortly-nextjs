@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
 
 import Container from "react-bootstrap/Container";
@@ -13,7 +14,11 @@ const Hero = () => {
     <div className={heroStyles.root}>
       <Row>
         <Col xs={12} md={5} className="order-md-last" style={{ padding: "0" }}>
-          <Image src={heroImg} alt="Shortly illustration" />
+          <Image
+            src={heroImg}
+            alt="Shortly illustration"
+            className={heroStyles.heroImg}
+          />
         </Col>
         <Col xs={12} md={7}>
           <Container>
