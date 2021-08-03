@@ -1,0 +1,22 @@
+@import "@/styles/variables";
+
+.root {
+  padding: $spacing-small 0 $spacing-xxxlarge 0;
+}
+
+.text {
+  padding-top: $spacing-xxxlarge;
+  padding-right: $spacing-large * 3;
+  padding-left: $spacing-large * 3;
+
+  h1 {
+    font-weight: 700;
+    font-size: 4.2rem;
+    color: $custom-neutral-verydarkblue;
+  }
+
+  p {
+    color: $custom-neutral-grayishviolet;
+    padding-right: $spacing-xxxlarge;
+  }
+}
