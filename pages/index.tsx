@@ -1,6 +1,7 @@
 import Head from "next/head";
 
 import Layout from "@/components/layout/Layout";
+import Hero from "@/components/hero/Hero";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -20,7 +21,7 @@ export default function Home() {
           <link rel="icon" href="/favicon-32x32.png" />
         </Head>
 
-        <h1>Url Shortener</h1>
+        <Hero />
       </div>
     </Layout>
   );
