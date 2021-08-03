@@ -1,0 +1,42 @@
+@import "@/styles/variables";
+
+$bg-boost-desktop: "../../assets/images/bg-boost-desktop.svg";
+$bg-boost-mobile: "../../assets/images/bg-boost-mobile.svg";
+
+.root {
+  min-height: 200px;
+  background-color: $custom-primary-darkvoilet;
+}
+
+.background {
+  min-height: 200px;
+  background-image: url($bg-boost-desktop);
+  background-position: center;
+  background-size: cover;
+}
+
+.boost {
+  padding: $spacing-xxxlarge $spacing-small;
+  color: #fff;
+  text-align: center;
+
+  h1 {
+    font-weight: 700;
+    margin-bottom: $spacing-large;
+  }
+}
+
+// mobile screen display
+@media screen and (max-width: 375px) {
+  .background {
+    background-image: url($bg-boost-mobile) !important;
+  }
+
+  .boost {
+    h1 {
+      font-weight: 500;
+      font-size: 1.5rem;
+      margin-bottom: $spacing-large;
+    }
+  }
+}
