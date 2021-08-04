@@ -6,29 +6,29 @@
 .btn-custom-primary-large {
   @include make-button($custom-primary-cyan, 'large', 'solid');
   @include make-button-hover($custom-primary-cyan);
-  @include make-button-active($custom-neutral-verydarkviolet);
+  @include make-button-active($custom-primary-darkvoilet);
 }
 .btn-rounded-custom-primary-large {
   @include make-button($custom-primary-cyan, 'large', 'solid');
   @include make-button-hover($custom-primary-cyan);
-  @include make-button-active($custom-neutral-verydarkviolet);
+  @include make-button-active($custom-primary-darkvoilet);
   @include make-button-rounded();
 }
 .btn-custom-primary-normal {
   @include make-button($custom-primary-cyan, 'normal', 'solid');
   @include make-button-hover($custom-primary-cyan);
-  @include make-button-active($custom-neutral-verydarkviolet);
+  @include make-button-active($custom-primary-darkvoilet);
 }
 .btn-rounded-custom-primary-normal {
   @include make-button($custom-primary-cyan, 'normal', 'solid');
   @include make-button-hover($custom-primary-cyan);
-  @include make-button-active($custom-neutral-verydarkviolet);
+  @include make-button-active($custom-primary-darkvoilet);
   @include make-button-rounded();
 }
-.btn-custom-primary-normal {
+.btn-custom-primary-small {
   @include make-button($custom-primary-cyan, 'small', 'solid');
   @include make-button-hover($custom-primary-cyan);
-  @include make-button-active($custom-neutral-verydarkviolet);
+  @include make-button-active($custom-primary-darkvoilet);
 }
 
 html,
