@@ -1,0 +1,51 @@
+@import "@/styles/variables";
+
+.card {
+  border: 1px solid transparent !important;
+  border-radius: 8px;
+}
+
+.iconbox {
+  padding-left: $spacing-large;
+  padding-right: $spacing-large;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: -($spacing-xxlarge);
+}
+
+.iconcircle {
+  height: 80px;
+  width: 80px;
+  background-color: $custom-primary-darkvoilet;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: $custom-neutral-verydarkviolet;
+  font-weight: 700;
+}
+
+.text {
+  color: $custom-neutral-grayishviolet;
+}
+
+@media screen and (max-width: 375px) {
+  .iconbox {
+    justify-content: space-around;
+    margin-top: -($spacing-xlarge);
+  }
+
+  .iconcircle {
+    height: 70px;
+    width: 70px;
+  }
+
+  .card {
+    margin-top: $spacing-large;
+    margin-bottom: $spacing-xlarge * 2;
+    text-align: center;
+  }
+}
