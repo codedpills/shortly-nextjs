@@ -1,0 +1,42 @@
+@import "@/styles/variables";
+
+.root {
+  padding: $spacing-xxxlarge * 2 0;
+  background-color: lighten($color: $custom-primary-darkvoilet, $amount: 70);
+}
+
+.heading {
+  padding: 0 $spacing-xxxlarge * 4 $spacing-xxxlarge 0;
+  text-align: center;
+
+  h2 {
+    font-weight: 700;
+    color: $custom-neutral-verydarkviolet;
+  }
+
+  p {
+    color: $custom-neutral-grayishviolet;
+  }
+}
+
+// mobile screen display
+@media screen and (max-width: 375px) {
+  .root {
+    padding: $spacing-xxxlarge 0;
+    padding-bottom: $spacing-large;
+  }
+
+  .heading {
+    padding: 0 $spacing-xlarge;
+    padding-bottom: $spacing-large;
+
+    h2 {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+  }
+
+  .col {
+    padding-top: 0 !important;
+  }
+}
