@@ -1,0 +1,20 @@
+@import "@/styles/variables";
+
+.submitbtn {
+    font-weight: 700;
+    padding-left: $spacing-small !important;
+    padding-right: $spacing-small !important;
+}
+
+@media screen and (max-width: 375px) {
+    .submitbtn {
+        margin-top: $spacing-large;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+    .input {
+        &::placeholder {
+            font-size: 1rem !important;
+        }
+    }
+  }
