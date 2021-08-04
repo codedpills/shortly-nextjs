@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/Container";
 
 import ShortLinkList from "./shortlink-list/ShortLinkList";
+import ShortLinkFormWrapper from "./shortlinkform-wrapper/ShortLinkFormWrapper";
 
 import linkShortnerStyles from "./LinkShortner.module.scss";
 
@@ -25,7 +26,11 @@ const sampleLinks = [
 const LinkShortner = () => {
   return (
     <div className={linkShortnerStyles.root}>
-      <div className={linkShortnerStyles.formcontainer}></div>
+      <div className={linkShortnerStyles.whitebg}></div>
+      <div className={linkShortnerStyles.neutralgraybg}></div>
+      <Container className={linkShortnerStyles.wrappercontainer}>
+        <ShortLinkFormWrapper />
+      </Container>
       <div className={linkShortnerStyles.shortlinkscontainer}>
         <Container>
           <ShortLinkList shortlinks={sampleLinks} />
