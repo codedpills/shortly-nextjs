@@ -3,7 +3,7 @@
 .card {
   padding: $spacing-small;
   margin: $spacing-small 0;
-  border: none;
+  border: none !important;
 }
 
 .originalUrl {
@@ -35,5 +35,6 @@
     color: $custom-primary-cyan;
     padding: ($spacing-small / 2) 0;
     text-align: left;
+    margin-bottom: 0.5rem;
   }
 }
