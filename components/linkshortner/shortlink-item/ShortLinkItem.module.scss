@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import "@/styles/variables";
 
 .card {
@@ -26,14 +28,14 @@
   .originalUrl {
     font-size: 0.8rem;
     color: $custom-neutral-verydarkblue;
-    padding: ($spacing-small / 2) 0;
+    padding: math.div($spacing-small, 2) 0;
     border-bottom: 1px solid lighten($color: $custom-neutral-gray, $amount: 20);
   }
 
   .shortenedUrl {
     font-size: 0.8rem;
     color: $custom-primary-cyan;
-    padding: ($spacing-small / 2) 0;
+    padding: math.div($spacing-small, 2) 0;
     text-align: left;
     margin-bottom: 0.5rem;
   }
