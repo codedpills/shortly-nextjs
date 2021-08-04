@@ -1,11 +1,39 @@
 @import "@/styles/variables";
 
 .root {
-    margin: 0 !important;
+  margin: 0 !important;
+}
+
+.whitebg {
+  min-height: 100px;
+  background-color: #fff;
+}
+
+.neutralgraybg {
+  min-height: 100px;
+  background-color: lighten($color: $custom-primary-darkvoilet, $amount: 70);
+}
+
+.wrappercontainer {
+  margin-top: -($spacing-xxxlarge * 2.5);
 }
 
 .shortlinkscontainer {
   background-color: lighten($color: $custom-primary-darkvoilet, $amount: 70);
   min-height: 4rem;
   padding: $spacing-small 0;
+}
+
+@media screen and (max-width: 375px) {
+  .whitebg {
+    min-height: 150px;
+  }
+
+  .neutralgraybg {
+    min-height: 100px;
+  }
+
+  .wrappercontainer {
+    margin-top: -($spacing-xxlarge * 4);
+  }
 }
