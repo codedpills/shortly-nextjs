@@ -1,0 +1,28 @@
+@import "@/styles/variables";
+
+$bg-boost-desktop: "../../../assets/images/bg-shorten-desktop.svg";
+$bg-boost-mobile: "../../../assets/images/bg-shorten-mobile.svg";
+
+.root {
+  min-height: 50px;
+  background-color: $custom-primary-darkvoilet;
+  border: 1px solid transparent;
+  border-radius: 8px !important;
+}
+
+.background {
+  min-height: 50px;
+  background-image: url($bg-boost-desktop);
+  background-position: center;
+  background-size: cover;
+  padding: $spacing-xlarge;
+  border: 1px solid transparent;
+  border-radius: 8px !important;
+}
+
+@media screen and (max-width: 375px) {
+    .background {
+        background-image: url($bg-boost-mobile) !important;
+        padding: $spacing-large;
+      }
+}
