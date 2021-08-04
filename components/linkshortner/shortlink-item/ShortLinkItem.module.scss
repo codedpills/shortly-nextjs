@@ -1,0 +1,37 @@
+@import "@/styles/variables";
+
+.card {
+  padding: $spacing-small;
+  margin: $spacing-small 0;
+  border: none;
+}
+
+.originalUrl {
+  font-size: 1rem;
+  color: $custom-neutral-verydarkblue;
+}
+
+.shortenedUrl {
+  font-size: 1rem;
+  color: $custom-primary-cyan;
+}
+
+.activebtn {
+  background-color: $custom-primary-darkvoilet !important;
+}
+
+// mobile screen display
+@media screen and (max-width: 375px) {
+  .originalUrl {
+    font-size: 0.8rem;
+    color: $custom-neutral-verydarkblue;
+    padding: ($spacing-small / 2) 0;
+    border-bottom: 1px solid lighten($color: $custom-neutral-gray, $amount: 20);
+  }
+
+  .shortenedUrl {
+    font-size: 0.8rem;
+    color: $custom-primary-cyan;
+    padding: ($spacing-small / 2) 0;
+  }
+}
