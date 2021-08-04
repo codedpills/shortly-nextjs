@@ -6,7 +6,8 @@
 }
 
 .heading {
-  padding: 0 $spacing-xxxlarge * 4 $spacing-xxxlarge 0;
+  padding: 0 $spacing-xxxlarge * 4;
+  padding-bottom: $spacing-xxxlarge;
   text-align: center;
 
   h2 {
