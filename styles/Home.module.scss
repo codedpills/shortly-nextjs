@@ -1,0 +1,12 @@
+.container {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+// mobile screen display
+@media screen and (max-width: 375px) {
+  .container {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+}

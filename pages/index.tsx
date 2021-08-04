@@ -3,6 +3,7 @@ import Head from "next/head";
 import Layout from "@/components/layout/Layout";
 import Hero from "@/components/hero/Hero";
 import CallToAction from "@/components/cta/CallToAction";
+import Statistics from "@/components/statistics/Statistics";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -23,6 +24,7 @@ export default function Home() {
         </Head>
 
         <Hero />
+        <Statistics />
         <CallToAction />
       </div>
     </Layout>
