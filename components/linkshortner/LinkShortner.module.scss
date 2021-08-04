@@ -1,0 +1,11 @@
+@import "@/styles/variables";
+
+.root {
+    margin: 0 !important;
+}
+
+.shortlinkscontainer {
+  background-color: lighten($color: $custom-primary-darkvoilet, $amount: 70);
+  min-height: 4rem;
+  padding: $spacing-small 0;
+}

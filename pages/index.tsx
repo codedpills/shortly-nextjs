@@ -4,6 +4,7 @@ import Layout from "@/components/layout/Layout";
 import Hero from "@/components/hero/Hero";
 import CallToAction from "@/components/cta/CallToAction";
 import Statistics from "@/components/statistics/Statistics";
+import LinkShortner from "@/components/linkshortner/LinkShortner";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -24,6 +25,7 @@ export default function Home() {
         </Head>
 
         <Hero />
+        <LinkShortner />
         <Statistics />
         <CallToAction />
       </div>

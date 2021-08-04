@@ -14,6 +14,7 @@
 .shortenedUrl {
   font-size: 1rem;
   color: $custom-primary-cyan;
+  text-align: right;
 }
 
 .activebtn {
@@ -33,5 +34,6 @@
     font-size: 0.8rem;
     color: $custom-primary-cyan;
     padding: ($spacing-small / 2) 0;
+    text-align: left;
   }
 }
