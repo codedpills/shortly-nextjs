@@ -10,18 +10,25 @@ import ShortLinkList from "./shortlink-list/ShortLinkList";
 import ShortLinkFormWrapper from "./shortlinkform-wrapper/ShortLinkFormWrapper";
 
 import linkShortnerStyles from "./LinkShortner.module.scss";
+import { ShortLinks } from "@/types/shortLink";
 
 const LinkShortner = () => {
-  const [shortlinks, setShortlinks] = useState([]);
+  const [shortlinks, setShortlinks] = useState<{ id: string }[]>([]);
 
   useEffect(() => {
-    const fetchSavedShortLinks = async () => {
-      const data = await db.collection("shortlinks").get();
-      const shortLinksData = data.docs.map((link) => ({
-        id: link.id,
-        ...link.data(),
-      }));
-      setShortlinks(shortLinksData);
+    const fetchSavedShortLinks = () => {
+      db.collection("shortlinks").onSnapshot(
+        (snapshot) => {
+          const shortLinksData = snapshot.docs.map((link) => ({
+            id: link.id,
+            ...link.data(),
+          }));
+          setShortlinks(shortLinksData);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     };
 
     fetchSavedShortLinks();
@@ -40,7 +47,6 @@ const LinkShortner = () => {
     };
 
     saveShortLink(newLink);
-    setShortlinks([...shortlinks, newLink]);
     clearLinkForm();
   };
 
