@@ -5,10 +5,12 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import { ShortLinkData } from "@/types/shortLink";
+
 import shortLinkItemStyles from "./ShortLinkItem.module.scss";
 
 type ShortLinkItemProp = {
-  shortLinkInfo: { originalUrl: string; shortenedUrl: string };
+  shortLinkInfo: ShortLinkData;
 };
 
 const ShortLinkItem = ({
