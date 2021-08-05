@@ -1,20 +1,35 @@
 @import "@/styles/variables";
 
 .submitbtn {
-    font-weight: 700;
-    padding-left: $spacing-small !important;
-    padding-right: $spacing-small !important;
+  font-weight: 700;
+  padding-left: $spacing-small !important;
+  padding-right: $spacing-small !important;
+}
+
+.warningtext {
+  margin-top: $spacing-xsmall;
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-style: italic;
+  color: $custom-secondary-red;
+}
+
+.warningborder {
+  border: 2px solid $custom-secondary-red !important;
+  &::placeholder {
+    color: $custom-secondary-red !important;
+  }
 }
 
 @media screen and (max-width: 375px) {
-    .submitbtn {
-        margin-top: $spacing-large;
-        font-size: 1rem;
-        font-weight: 700;
-    }
-    .input {
-        &::placeholder {
-            font-size: 1rem !important;
-        }
+  .submitbtn {
+    margin-top: $spacing-large;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .input {
+    &::placeholder {
+      font-size: 1rem !important;
     }
   }
+}

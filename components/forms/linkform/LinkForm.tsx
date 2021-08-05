@@ -6,45 +6,71 @@ import Button from "react-bootstrap/Button";
 
 import linkFormStyles from "./LinkForm.module.scss";
 
-const LinkForm = () => {
-  const [validated, setValidated] = useState(false);
+type LinkFormProps = {
+  onCreateShortLink: (link: string, callback: () => void) => void;
+};
 
-  const inputRef = useRef<HTMLInputElement>(null!);
+// const validateLinkInput = () => {}
+
+const LinkForm = ({ onCreateShortLink }: LinkFormProps) => {
+  const [linkUrl, setLinkUrl] = useState("");
+  const [isValid, setIsValid] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
 
-    const linkInputVal = inputRef.current.value;
-
-    if (linkInputVal === "") {
-      e.stopPropagation();
+    if (linkUrl == "") {
+      setIsValid(false);
+      return;
     }
 
-    setValidated(true);
+    setSubmitted(true);
+
+    onCreateShortLink(linkUrl, () => {
+      setIsValid(true);
+      setSubmitted(false);
+      setLinkUrl("");
+    });
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Form.Row>
         <Col xs={12} md={10}>
           <Form.Control
-            ref={inputRef}
+            name="linkUrl"
             placeholder="Shorten a link here..."
             type="url"
-            required
             size="lg"
-            className={linkFormStyles.input}
+            className={`${linkFormStyles.input} ${
+              !isValid ? linkFormStyles.warningborder : ""
+            }`}
+            onChange={(e) => setLinkUrl(e.target.value)}
+            value={linkUrl}
           />
-          <Form.Control.Feedback type="invalid">
+          <div
+            className={linkFormStyles.warningtext}
+            style={{ visibility: isValid ? "hidden" : "visible" }}
+          >
             Please add a link
-          </Form.Control.Feedback>
+          </div>
         </Col>
         <Col xs={12} md={2}>
           <Button
             className={`btn btn-block btn-lg btn-custom-primary-large ${linkFormStyles.submitbtn}`}
             type="submit"
+            disabled={submitted}
           >
-            Shorten It!
+            {submitted ? (
+              <span
+                className="spinner-border spinner-border-sm mb-1"
+                role="status"
+                aria-hidden="true"
+              ></span>
+            ) : (
+              "Shorten It!"
+            )}
           </Button>
         </Col>
       </Form.Row>
