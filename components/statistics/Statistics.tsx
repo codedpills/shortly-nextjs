@@ -34,7 +34,7 @@ const Statistics = () => {
         </div>
         <div className={statisticsStyles.linewrapper}>
           <div className={statisticsStyles.line}></div>
-          <Row>{statsList}</Row>
+          <Row className={statisticsStyles.row}>{statsList}</Row>
         </div>
       </Container>
     </div>

@@ -20,6 +20,22 @@
   }
 }
 
+.linewrapper {
+  display: flex;
+  flex-grow: initial;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  height: 8px;
+  width: 60%;
+  background-color: $custom-primary-cyan;
+  position: absolute;
+  margin-top: -($spacing-xlarge);
+}
+
 // mobile screen display
 @media screen and (max-width: 375px) {
   .root {
@@ -39,5 +55,10 @@
 
   .col {
     padding-top: 0 !important;
+  }
+
+  .line {
+    width: 8px;
+    height: 60%;
   }
 }
