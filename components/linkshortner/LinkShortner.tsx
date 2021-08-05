@@ -1,3 +1,9 @@
+import { useState, useEffect } from "react";
+
+import { createShortLink } from "@/services/api/shortlinksApi";
+import { saveShortLink } from "@/services/firebase/firebaseShortlinks";
+import { db } from "@/services/firebase/firebaseShortlinks";
+
 import Container from "react-bootstrap/Container";
 
 import ShortLinkList from "./shortlink-list/ShortLinkList";
@@ -5,35 +11,49 @@ import ShortLinkFormWrapper from "./shortlinkform-wrapper/ShortLinkFormWrapper";
 
 import linkShortnerStyles from "./LinkShortner.module.scss";
 
-const sampleLinks = [
-  {
-    id: "sdklk34",
-    originalUrl: "https://longlink.com/welsfdsdfdsfdsk",
-    shortenedUrl: "https://shrtly/sdlfk",
-  },
-  {
-    id: "34dsfjsdl",
-    originalUrl: "https://longlink.com/834rsdfjksdhfdf",
-    shortenedUrl: "https://shrtly/3433sd",
-  },
-  {
-    id: "8908sdf",
-    originalUrl: "https://longlink.com/09809sdfsde444",
-    shortenedUrl: "https://shrtly/898ssd",
-  },
-];
-
 const LinkShortner = () => {
+  const [shortlinks, setShortlinks] = useState([]);
+
+  useEffect(() => {
+    const fetchSavedShortLinks = async () => {
+      const data = await db.collection("shortlinks").get();
+      const shortLinksData = data.docs.map((link) => ({
+        id: link.id,
+        ...link.data(),
+      }));
+      setShortlinks(shortLinksData);
+    };
+
+    fetchSavedShortLinks();
+  }, []);
+
+  const handleCreateShortLink = async (
+    link: string,
+    clearLinkForm: () => void
+  ) => {
+    const res = await createShortLink(link);
+    const linkInfo = res.data.result;
+    const newLink = {
+      originalUrl: linkInfo.original_link,
+      shortenedUrl: linkInfo.full_short_link,
+      shortCode: linkInfo.code,
+    };
+
+    saveShortLink(newLink);
+    setShortlinks([...shortlinks, newLink]);
+    clearLinkForm();
+  };
+
   return (
     <div className={linkShortnerStyles.root}>
       <div className={linkShortnerStyles.whitebg}></div>
       <div className={linkShortnerStyles.neutralgraybg}></div>
       <Container className={linkShortnerStyles.wrappercontainer}>
-        <ShortLinkFormWrapper />
+        <ShortLinkFormWrapper createShortLink={handleCreateShortLink} />
       </Container>
       <div className={linkShortnerStyles.shortlinkscontainer}>
         <Container>
-          <ShortLinkList shortlinks={sampleLinks} />
+          <ShortLinkList shortlinks={shortlinks} />
         </Container>
       </div>
     </div>
