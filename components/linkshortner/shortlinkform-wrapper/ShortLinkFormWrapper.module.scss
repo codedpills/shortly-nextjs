@@ -15,7 +15,8 @@ $bg-boost-mobile: "../../../assets/images/bg-shorten-mobile.svg";
   background-image: url($bg-boost-desktop);
   background-position: center;
   background-size: cover;
-  padding: $spacing-xlarge;
+  padding: $spacing-xlarge + $spacing-xsmall;
+  padding-bottom: $spacing-small;
   border: 1px solid transparent;
   border-radius: 8px !important;
 }
