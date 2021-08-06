@@ -21,7 +21,7 @@ const ShortLinkItem = ({
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(shortenedUrl || '');
+      await navigator.clipboard.writeText(shortenedUrl || "");
       setCopySuccess(true);
       setTimeout(() => {
         setCopySuccess(false);
@@ -32,7 +32,7 @@ const ShortLinkItem = ({
   };
 
   return (
-    <Card className={shortLinkItemStyles.card}>
+    <Card className={shortLinkItemStyles.card} data-testid="Shortlink_item">
       <Row>
         <Col xs={12} md={7}>
           <div className={shortLinkItemStyles.originalUrl}>{originalUrl}</div>
