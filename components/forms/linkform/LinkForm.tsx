@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
@@ -9,8 +9,6 @@ import linkFormStyles from "./LinkForm.module.scss";
 type LinkFormProps = {
   onCreateShortLink: (link: string, callback: () => void) => void;
 };
-
-// const validateLinkInput = () => {}
 
 const LinkForm = ({ onCreateShortLink }: LinkFormProps) => {
   const [linkUrl, setLinkUrl] = useState("");
@@ -39,6 +37,7 @@ const LinkForm = ({ onCreateShortLink }: LinkFormProps) => {
       <Form.Row>
         <Col xs={12} md={10}>
           <Form.Control
+            data-testid="Url_input"
             name="linkUrl"
             placeholder="Shorten a link here..."
             type="url"
@@ -50,6 +49,7 @@ const LinkForm = ({ onCreateShortLink }: LinkFormProps) => {
             value={linkUrl}
           />
           <div
+            data-testid="Input_error_text"
             className={linkFormStyles.warningtext}
             style={{ visibility: isValid ? "hidden" : "visible" }}
           >
