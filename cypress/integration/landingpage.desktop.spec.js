@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 /** 
- * page should be visible on mobile browser
+ * page should be visible on desktop browser
  * scroll to bottom of page and back
  * 
  * TEST SHORTEN LINK FUNCTIONALITY
@@ -16,8 +16,7 @@
  * click on copy button on shortened url item
  * button should change state to copied
 */
-
-describe('Landing page on mobile', () => {
+describe('Landing page on desktop', () => {
     let originalUrl = 'https://www.testlink.com/';
     let shortLink = 'https://testshrtco.de/'
 
@@ -31,18 +30,12 @@ describe('Landing page on mobile', () => {
         const opts = { recursive: true };
         cy.callFirestore("delete", "shortlinks", opts);
 
-        cy.viewport('iphone-6');
-
         cy.visit('/');
     })
 
-    beforeEach(() => {
-        cy.viewport('iphone-6');
-    })
-
     it('renders properly on desktop viewport', () => {
-        cy.scrollTo('bottom', { duration: 3000, easing: 'linear' });
-        cy.scrollTo('top', { duration: 3000, easing: 'linear' });
+        cy.scrollTo('bottom', { duration: 2000, easing: 'linear' });
+        cy.scrollTo('top', { duration: 2000, easing: 'linear' });
     });
 
     it('should show error message when form is submitted with empty input field', () => {
@@ -68,15 +61,15 @@ describe('Landing page on mobile', () => {
             },
             delay: 1000
         }).as('response');
-        cy.get(`[data-testid="Shortlink_item"]`).should('have.length', 0);
+        cy.get('[data-testid="Shortlink_item"]').should('have.length', 0);
         cy.get('input[type=url]').type(originalUrl);
         cy.get('button[type=submit]').click();
         cy.get('span.spinner-border').should('be.visible');
         cy.get('span.spinner-border', { timeout: 3000 }).should('not.exist');
-        cy.get(`[data-testid="Shortlink_item"]`).should('have.length', 1);
+        cy.get('[data-testid="Shortlink_item"]').should('have.length', 1);
     })
 
-    it('should copy link text to clipboard', () => {
+    it('should copy link text to clipboard', ()=>{
         cy.get('[data-testid="Shortlink_item"]').find('button').contains('Copy');
         cy.get('[data-testid="Shortlink_item"]').find('button').click();
         cy.get('[data-testid="Shortlink_item"]').find('button').contains('Copied');
