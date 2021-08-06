@@ -1,0 +1,8 @@
+{
+    "baseUrl": "http://localhost:4000",
+    "ignoreTestFiles": "**/1-getting-started/*",
+    "viewportWidth": 1440,
+    "viewportHeight": 1080,
+    "mobileViewportWidth": 375,
+    "video": false
+}
