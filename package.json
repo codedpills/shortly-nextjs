@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:test":"next build && next start -p 4000",
+    "test":"cypress open",
     "lint": "next lint"
   },
   "dependencies": {
@@ -21,6 +23,7 @@
   },
   "devDependencies": {
     "@types/react": "17.0.15",
+    "cypress": "^8.2.0",
     "eslint": "7.32.0",
     "eslint-config-next": "11.0.1",
     "typescript": "4.3.5"
