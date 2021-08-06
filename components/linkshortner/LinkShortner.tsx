@@ -13,13 +13,13 @@ import linkShortnerStyles from "./LinkShortner.module.scss";
 import { ShortLinks } from "@/types/shortLink";
 
 const LinkShortner = () => {
-  const [shortlinks, setShortlinks] = useState<{ id: string }[]>([]);
+  const [shortlinks, setShortlinks] = useState<ShortLinks>([]);
 
   useEffect(() => {
     const fetchSavedShortLinks = () => {
-      db.collection("shortlinks").onSnapshot(
+      db.collection("shortlinks").orderBy('createdAt','desc').onSnapshot(
         (snapshot) => {
-          const shortLinksData = snapshot.docs.map((link) => ({
+          const shortLinksData:ShortLinks = snapshot.docs.map((link) => ({
             id: link.id,
             ...link.data(),
           }));
