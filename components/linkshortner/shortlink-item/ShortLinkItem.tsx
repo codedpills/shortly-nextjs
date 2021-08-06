@@ -21,7 +21,7 @@ const ShortLinkItem = ({
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(shortenedUrl);
+      await navigator.clipboard.writeText(shortenedUrl || '');
       setCopySuccess(true);
       setTimeout(() => {
         setCopySuccess(false);
