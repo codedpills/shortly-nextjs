@@ -1,0 +1,65 @@
+/// <reference types="cypress" />
+
+/** 
+ * page should be visible on desktop browser
+ * scroll to bottom of page and back
+ * 
+ * TEST SHORTEN LINK FUNCTIONALITY
+ * type inside form to shorten link
+ * if form is empty when submit btn is clicked, show error state
+ * 
+ * type inside form and submit
+ * show loader on button
+ * mock api call to get shortened url
+ * display shortened url item
+ * 
+ * click on copy button on shortened url item
+ * button should change state to copied
+*/
+
+describe('Landing page on desktop', () => {
+    let originalUrl = 'https://www.testlink.com/';
+    let shortLink = 'https://testshrtco.de/'
+
+    beforeEach(() => {
+        let ranNum = Math.floor(Math.random() * 100000);
+
+        originalUrl += ranNum;
+        shortLink += ranNum;
+
+        cy.visit('/');
+    })
+
+    it('renders properly on desktop viewport', () => {
+        cy.scrollTo('bottom', { duration: 2000, easing: 'linear' });
+        cy.scrollTo('top', { duration: 2000, easing: 'linear' });
+    });
+
+    it('should show error message when form is submitted with empty input field', () => {
+        cy.get('input[type=url]').should('have.value', '');
+        cy.get('button[type=submit]').click();
+        cy.get(`[data-testid="Input_error_text"]`).should('be.visible');
+    });
+
+    it('should create new shortlink successfully', () => {
+        cy.intercept('POST', 'https://api.shrtco.de/v2/**', {
+            body: {
+                statusCode: 200,
+                result: {
+                    "code": "KCveN",
+                    "short_link": "testshrtco.de/KCveN",
+                    "full_short_link": shortLink,
+                    "short_link2": "9qr.de/KCveN",
+                    "full_short_link2": "https://9qr.de/KCveN",
+                    "share_link": "shrtco.de/share/KCveN",
+                    "full_share_link": "https://shrtco.de/share/KCveN",
+                    "original_link": originalUrl
+                }
+            },
+            delay: 1000
+        }).as('response');
+        cy.get('input[type=url]').type(originalUrl);
+        cy.get('button[type=submit]').click();
+        cy.get('span.spinner-border').should('be.visible');
+    })
+});
