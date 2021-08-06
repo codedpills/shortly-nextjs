@@ -21,11 +21,15 @@ describe('Landing page on desktop', () => {
     let originalUrl = 'https://www.testlink.com/';
     let shortLink = 'https://testshrtco.de/'
 
-    beforeEach(() => {
+
+    before(() => {
         let ranNum = Math.floor(Math.random() * 100000);
 
         originalUrl += ranNum;
         shortLink += ranNum;
+
+        const opts = { recursive: true };
+        cy.callFirestore("delete", "shortlinks", opts);
 
         cy.visit('/');
     })
@@ -58,8 +62,22 @@ describe('Landing page on desktop', () => {
             },
             delay: 1000
         }).as('response');
+        cy.get('[data-testid="Shortlink_item"]').should('have.length', 0);
         cy.get('input[type=url]').type(originalUrl);
         cy.get('button[type=submit]').click();
         cy.get('span.spinner-border').should('be.visible');
+        cy.get('span.spinner-border', { timeout: 3000 }).should('not.exist');
+        cy.get('[data-testid="Shortlink_item"]').should('have.length', 1);
+    })
+
+    it('should copy link text to clipboard', ()=>{
+        cy.get('[data-testid="Shortlink_item"]').find('button').contains('Copy');
+        cy.get('[data-testid="Shortlink_item"]').find('button').click();
+        cy.get('[data-testid="Shortlink_item"]').find('button').contains('Copied');
+        cy.get('[data-testid="Shortlink_item"]', { timeout: 1000 })
+            .find('button')
+            .should('not.contain', 'Copied');
+            cy.get('[data-testid="Shortlink_item"]').find('button').contains('Copy');
+        cy.task('getClipboard').should('contain', shortLink);
     })
 });
