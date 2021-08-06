@@ -16,7 +16,19 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
+const admin = require("firebase-admin");
+const cypressFirebasePlugin = require("cypress-firebase").plugin;
+const clipboardy = require('clipboardy');
+
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-}
+  on('task', {
+    getClipboard () {
+        return clipboardy.readSync();
+    }
+});
+  const extendedConfig = cypressFirebasePlugin(on, config, admin);
+
+  // Add other plugins/tasks such as code coverage here
+
+  return extendedConfig;
+};
