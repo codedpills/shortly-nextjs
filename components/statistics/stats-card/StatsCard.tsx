@@ -13,7 +13,7 @@ const StatsCard = ({ stats }: StatsProp) => {
     <Card className={statsCardStyles.card}>
       <div className={statsCardStyles.iconbox}>
         <div className={statsCardStyles.iconcircle}>
-          <Image src={stats.image} alt={stats.title} />
+          <Image src={stats.image} alt={stats.title} width={'40%'} height={'40%'}/>
         </div>
       </div>
       <Card.Body>
