@@ -22,13 +22,3 @@ Your task is to build out the project to the designs inside the `/design` folder
 You will find all the required assets in the `/images` folder. The assets are already optimized. The designs are in JPG static format. This will mean that you'll need to use your best judgment for styles such as `font-size`, `padding`, and `margin`.
 
 There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
-
-### Evaluation Criteria
-
--   **TypeScript** best practices
--   Show us your work through your commit history
--   We're looking for you to produce working code, with enough room to demonstrate how to structure components in a small program
--   Completeness: did you complete the features?
--   Correctness: does the functionality act in sensible, thought-out ways?
--   Maintainability: is it written in a clean, maintainable way?
--   Testing: is the system adequately tested?
